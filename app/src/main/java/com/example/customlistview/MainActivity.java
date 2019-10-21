@@ -1,23 +1,29 @@
 package com.example.customlistview;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.os.Bundle;
-
-//import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import java.util.ArrayList;
 
-public class MainActivity extends AppCompatActivity {
+//import android.support.v7.app.AppCompatActivity;
+
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+    Button button;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        button = findViewById(R.id.button);
+        button.setOnClickListener(this);
+
         ArrayList userList = getListData();
         final ListView lv = (ListView) findViewById(R.id.user_list);
         lv.setAdapter(new CustomListAdapter(this, userList));
@@ -47,5 +53,10 @@ public class MainActivity extends AppCompatActivity {
         user3.setLocation("Guntur");
         results.add(user3);
         return results;
+    }
+
+    @Override
+    public void onClick(View view) {
+
     }
 }
